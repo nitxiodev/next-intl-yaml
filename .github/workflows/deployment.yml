@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   test:
-    name: tests
+    name: test and deploy
     runs-on: ubuntu-latest
 
     steps:
