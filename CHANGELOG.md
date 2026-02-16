@@ -1,3 +1,9 @@
+## 1.0.2 (2026-02-16)
+
+### Fix
+
+- **deployment.yaml**: update jobs to try the deployment
+
 ## 1.0.1 (2026-02-16)
 
 ### Fix
