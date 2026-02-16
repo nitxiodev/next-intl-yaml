@@ -84,7 +84,7 @@ ${localeBlocks.join("\n")}
 `;
 
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, `${fileContent}\n\n`, "utf-8");
+    fs.writeFileSync(outputPath, `${fileContent}`, "utf-8");
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     throw new Error(
