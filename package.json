@@ -1,0 +1,32 @@
+{
+  "name": "@nitxiodev/next-intl-yaml",
+  "version": "0.2.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
+  "license": "MIT",
+  "peerDependencies": {
+    "next-intl": ">=4"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "glob": "^13.0.0",
+    "yaml-loader": "^0.8.1"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^16.1.6",
+    "@types/node": "^25.2.3",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^10.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "next": "^16.1.6",
+    "typescript-eslint": "^8.56.0",
+    "vitest": "^4.0.18"
+  }
+}

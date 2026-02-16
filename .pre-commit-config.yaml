@@ -1,0 +1,63 @@
+fail_fast: false
+repos:
+  - hooks:
+      - id: check-yaml
+      - args:
+          - --fix=lf
+        id: mixed-line-ending
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-json
+      - id: check-toml
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+  - hooks:
+      - id: prettier
+        exclude: '^messages/.*\.json$'
+        stages: [pre-commit]
+    repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.6.2
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint
+        entry: pnpm eslint --fix
+        language: system
+        files: \.([jt]sx?)$
+        types:
+          - file
+  - hooks:
+      - entry:
+          "bash -c '[[ \"$(git rev-parse --abbrev-ref HEAD)\" != \"master\" || -n\
+          \ \"$ALLOW_PUBLIC_WEBSITE_MERGE\" ]] || (echo \"\u26D4\uFE0F Direct pushes to\
+          \ master are not allowed.\" && exit 1)'"
+        id: prevent-master-push
+        language: system
+        name: Prevent Push to Master
+    repo: local
+  - hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages:
+          - push
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.31.0
+  - repo: local
+    hooks:
+      - id: no-console-log
+        name: "Prevent commits with console.log statements"
+        entry: bash
+        args:
+          - -c
+          - |
+            for file in "$@"; do
+              if grep -q 'console\.log' "$file"; then
+                echo "ERROR: console.log found in $file. Remove it before committing."
+                exit 1
+              fi
+            done
+          - dummy
+        language: system
+        files: \.([jt]sx?|vue)$
