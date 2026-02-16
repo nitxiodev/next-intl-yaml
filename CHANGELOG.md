@@ -1,3 +1,9 @@
+## 1.1.0 (2026-02-16)
+
+### Feat
+
+- **.npmignore**: add npm ignore
+
 ## 1.0.4 (2026-02-16)
 
 ### Refactor
