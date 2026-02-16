@@ -1,3 +1,9 @@
+## 1.0.1 (2026-02-16)
+
+### Fix
+
+- **github**: fix publish command
+
 ## 1.0.0 (2026-02-16)
 
 ### Feat
