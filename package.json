@@ -7,6 +7,25 @@
   "peerDependencies": {
     "next-intl": ">=4"
   },
+  "keywords": [
+    "next-intl",
+    "react",
+    "intl",
+    "i18n",
+    "internationalization",
+    "localization",
+    "translate",
+    "translation",
+    "format",
+    "formatting",
+    "next",
+    "next.js",
+    "yaml"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitxiodev/next-intl-yaml"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
