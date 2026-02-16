@@ -7,6 +7,7 @@ Compile distributed YAML translation files into a generated manifest that can be
 - Scans YAML files with a glob (default: `src/**/locales/*.yaml`)
 - Generates a TypeScript manifest (default: `src/i18n/locales-manifest.ts`)
 - Injects Turbopack `yaml-loader` rule via `withNextIntlYaml`
+- Works with Next.js HMR/Fast Refresh during development
 
 ## YAML file convention
 
