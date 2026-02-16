@@ -6,7 +6,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   test:
@@ -20,6 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          cache: "pnpm"
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
@@ -31,6 +32,9 @@ jobs:
       - name: Install peer dependencies
         run: |
           node -e 'const cp=require("node:child_process"); const pkg=require("./package.json"); const peers=Object.entries(pkg.peerDependencies ?? {}).map(([name, range]) => `${name}@${range}`); if (peers.length > 0) { cp.execFileSync("pnpm", ["add", "--save-dev", ...peers], {stdio: "inherit"}); }'
+
+      - name: Install npm@latest
+        run: npm install -g npm@latest # Trusted publishers
 
       - name: Install repository dependencies
         run: pnpm install --frozen-lockfile
