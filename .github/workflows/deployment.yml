@@ -39,4 +39,4 @@ jobs:
         run: pnpm test:coverage
 
       - name: pnpm publish
-        run: pnpm publish --no-git-checks
+        run: pnpm publish --access public --no-git-checks
