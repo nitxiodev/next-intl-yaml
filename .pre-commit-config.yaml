@@ -15,7 +15,6 @@ repos:
     rev: v5.0.0
   - hooks:
       - id: prettier
-        exclude: '^messages/.*\.json$'
         stages: [pre-commit]
     repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.6.2
@@ -41,7 +40,7 @@ repos:
       - id: commitizen
       - id: commitizen-branch
         stages:
-          - push
+          - pre-push
     repo: https://github.com/commitizen-tools/commitizen
     rev: v3.31.0
   - repo: local
