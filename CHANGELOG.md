@@ -1,3 +1,9 @@
+## 1.1.2 (2026-02-16)
+
+### Fix
+
+- **manifest.ts**: remove extra trailing spaces
+
 ## 1.1.1 (2026-02-16)
 
 ### Fix
