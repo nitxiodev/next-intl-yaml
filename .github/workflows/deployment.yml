@@ -1,0 +1,45 @@
+name: Deployment
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    name: tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install peer dependencies
+        run: |
+          node -e 'const cp=require("node:child_process"); const pkg=require("./package.json"); const peers=Object.entries(pkg.peerDependencies ?? {}).map(([name, range]) => `${name}@${range}`); if (peers.length > 0) { cp.execFileSync("pnpm", ["add", "--save-dev", ...peers], {stdio: "inherit"}); }'
+
+      - name: Install repository dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: pnpm run build
+        run: pnpm run build
+
+      - name: Run coverage tests
+        run: pnpm test:coverage
+
+      - name: pnpm publish
+        run: pnpm publish
