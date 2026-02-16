@@ -1,3 +1,9 @@
+## 1.0.4 (2026-02-16)
+
+### Refactor
+
+- **manifest.ts**: add extra blank space for linter
+
 ## 1.0.3 (2026-02-16)
 
 ### Fix
