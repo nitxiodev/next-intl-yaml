@@ -49,3 +49,4 @@ eslint.config.mjs
 CHANGELOG.md
 tsconfig.json
 vitest.config.mjs
+.github
