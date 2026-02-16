@@ -1,3 +1,9 @@
+## 1.0.3 (2026-02-16)
+
+### Fix
+
+- **github**: remove cache from setup node action
+
 ## 1.0.2 (2026-02-16)
 
 ### Fix
