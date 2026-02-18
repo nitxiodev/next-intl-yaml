@@ -1,3 +1,9 @@
+## 1.1.4 (2026-02-18)
+
+### Fix
+
+- add yaml.d.ts types to prevent warnings on generated manifest file
+
 ## 1.1.3 (2026-02-16)
 
 ### Fix
