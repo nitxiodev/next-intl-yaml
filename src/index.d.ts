@@ -1,3 +1,5 @@
+import "./yaml";
+
 import type { NextConfig } from "next";
 import type {
   NextConfigWithIntlYaml,
