@@ -1,12 +1,18 @@
 import type { NextConfig } from "next";
 import { generateLocalesManifest } from "./manifest";
 import type { NextConfigWithIntlYaml } from "./types";
+import { createRequire } from "module";
 
 export type { NextIntlYamlOptions } from "./types";
 export { generateLocalesManifest };
 
+// Resolves yaml-loader from THIS package's node_modules, not the project root.
+// This is necessary because pnpm doesn't hoist transitive deps by default.
+const _require = createRequire(import.meta.url);
+const YAML_LOADER_PATH = _require.resolve("yaml-loader");
+
 const YAML_TURBOPACK_RULE = {
-  loaders: ["yaml-loader"],
+  loaders: [YAML_LOADER_PATH],
   as: "*.js",
 };
 const STARTUP_LOG_FLAG = "__next_intl_yaml_startup_logged__";
@@ -44,7 +50,7 @@ export default function withNextIntlYaml(
             ...(config.module?.rules ?? []),
             {
               test: /\.ya?ml$/,
-              use: "yaml-loader",
+              use: YAML_LOADER_PATH, // absolute path instead of "yaml-loader"
             },
           ],
         },
