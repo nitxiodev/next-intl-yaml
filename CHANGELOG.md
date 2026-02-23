@@ -1,3 +1,9 @@
+## 1.1.5 (2026-02-23)
+
+### Fix
+
+- **index.ts**: resolves yaml-loader from node_modules instead of project root
+
 ## 1.1.4 (2026-02-18)
 
 ### Fix
