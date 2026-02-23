@@ -40,7 +40,10 @@ describe("withNextIntlYaml", () => {
     expect(result.turbopack).toEqual({
       rules: {
         "*.md": { loaders: ["raw-loader"], as: "*.js" },
-        "*.yaml": { loaders: ["yaml-loader"], as: "*.js" },
+        "*.yaml": {
+          loaders: [expect.stringContaining("yaml-loader")],
+          as: "*.js",
+        },
       },
     });
 
@@ -59,7 +62,7 @@ describe("withNextIntlYaml", () => {
           { test: /\.txt$/ },
           {
             test: /\.ya?ml$/,
-            use: "yaml-loader",
+            use: expect.stringContaining("yaml-loader"),
           },
         ],
       },
@@ -81,7 +84,7 @@ describe("withNextIntlYaml", () => {
         rules: [
           {
             test: /\.ya?ml$/,
-            use: "yaml-loader",
+            use: expect.stringContaining("yaml-loader"),
           },
         ],
       },

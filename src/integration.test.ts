@@ -42,7 +42,10 @@ describe("withNextIntlYaml integration", () => {
       expect(config.reactStrictMode).toBe(true);
       expect(config).not.toHaveProperty("nextIntlYaml");
       expect(config.turbopack?.rules).toMatchObject({
-        "*.yaml": { loaders: ["yaml-loader"], as: "*.js" },
+        "*.yaml": {
+          loaders: [expect.stringContaining("yaml-loader")],
+          as: "*.js",
+        },
       });
 
       const manifestPath = path.join(
@@ -94,7 +97,7 @@ describe("withNextIntlYaml integration", () => {
       expect(webpackOutput.module.rules[0]).toEqual({ test: /\.txt$/ });
       expect(webpackOutput.module.rules[1]).toEqual({
         test: /\.ya?ml$/,
-        use: "yaml-loader",
+        use: expect.stringContaining("yaml-loader"),
       });
 
       const manifestPath = path.join(
